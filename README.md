@@ -84,3 +84,119 @@ Storage:
 ---
 
 ## 📂 Project Structure
+
+CogniviseAI/
+│
+├── backend/
+│   ├── app/
+│   │   ├── main.py              # FastAPI entry point
+│   │   ├── routes.py            # API route definitions
+│   │   ├── services/
+│   │   │   ├── diagnostic.py    # Diagnostic question generator
+│   │   │   ├── classifier.py    # Confusion classification logic
+│   │   │   └── reinforcement.py # Reinforcement logic
+│   │   ├── models/
+│   │   │   └── schemas.py       # Pydantic request/response models
+│   │   ├── storage/
+│   │   │   └── tracker.py       # Confusion tracking system
+│   │   └── config.py            # Environment + API configuration
+│   │
+│   ├── requirements.txt
+│   └── .env                     # API keys (NOT committed)
+│## ▶️ How to Run Cognivise AI (Local Setup)
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/CogniviseAI.git
+cd CogniviseAI
+```
+
+---
+
+### 2️⃣ Setup Backend
+
+```bash
+cd backend
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+
+# Mac/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+---
+
+### 3️⃣ Add Environment Variables
+
+Create a `.env` file inside the `backend/` folder:
+
+```
+OPENAI_API_KEY=your_api_key_here
+```
+
+⚠️ Do NOT commit this file to GitHub.
+
+---
+
+### 4️⃣ Start Backend Server
+
+```bash
+uvicorn app.main:app --reload
+```
+
+If using simple structure (single main.py):
+
+```bash
+uvicorn main:app --reload
+```
+
+Backend will run at:
+```
+http://127.0.0.1:8000
+```
+
+---
+
+### 5️⃣ Open Frontend
+
+Go to:
+
+```
+frontend/index.html
+```
+
+Open it directly in your browser.
+
+---
+
+### ✅ Test API (Optional)
+
+Visit:
+```
+http://127.0.0.1:8000/docs
+```
+
+FastAPI interactive documentation will appear.
+├── frontend/
+│   ├── index.html               # Main UI
+│   ├── style.css                # Styling
+│   └── script.js                # API calls + UI logic
+│
+├── docs/
+│   ├── DESIGN.md                # System design document
+│   └── architecture.png         # (Optional diagram)
+│
+├── .gitignore
+├── README.md
+└── LICENSE
+
+
