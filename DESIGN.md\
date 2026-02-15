@@ -1,0 +1,259 @@
+# 🧠 Cognivise AI — System Design Document
+
+## 1. Product Overview
+
+Cognivise AI is a confusion-aware learning system that detects and repairs conceptual misunderstandings.
+
+Unlike traditional AI tutors that directly answer questions, Cognivise diagnoses *why* a learner is confused and corrects flawed mental models through structured reasoning and reinforcement.
+
+Core Idea:
+Understanding is not about answers. It is about correct mental models.
+
+---
+
+## 2. Problem Statement
+
+Most AI learning tools:
+- Provide generic explanations
+- Do not detect misconception patterns
+- Do not adapt explanations based on confusion type
+- Do not track conceptual weaknesses
+
+Learners often:
+- Memorize solutions
+- Misunderstand foundational logic
+- Repeat the same mistakes
+
+Cognivise AI solves this by introducing a diagnostic-first learning architecture.
+
+---
+
+## 3. Design Principles
+
+1. Diagnosis before explanation
+2. Structured output format
+3. Mental model repair over memorization
+4. Reinforcement after correction
+5. Lightweight but scalable architecture
+
+---
+
+## 4. High-Level Architecture
+
+Frontend (HTML/CSS/JS)
+        ↓
+FastAPI Backend (Python)
+        ↓
+Diagnostic Engine (LLM)
+        ↓
+Confusion Classification Engine
+        ↓
+Session Tracking Module
+
+---
+
+## 5. Component Breakdown
+
+### 5.1 Frontend Layer
+
+Responsibilities:
+- Concept input interface
+- Diagnostic question display
+- Answer submission
+- Structured AI response rendering
+- Confusion dashboard display
+
+Design Goals:
+- Minimal UI complexity
+- Focus on structured outputs
+- Fast interaction
+
+---
+
+### 5.2 Backend Layer (FastAPI)
+
+Endpoints:
+
+POST /diagnose  
+Generates 3 diagnostic questions for a given concept.
+
+POST /analyze  
+Analyzes user answers and classifies confusion type.
+
+GET /dashboard  
+Returns confusion tracking summary.
+
+Responsibilities:
+- API routing
+- Prompt formatting
+- Structured response parsing
+- Session logging
+
+---
+
+### 5.3 Diagnostic Engine
+
+Purpose:
+Reveal underlying misunderstanding patterns.
+
+Design:
+- Generate reasoning-based questions
+- Avoid definition-based questions
+- Force mental simulation
+
+Example (Recursion):
+- What stops recursion from running infinitely?
+- What happens after the first recursive call?
+- Trace factorial(3) step-by-step.
+
+---
+
+### 5.4 Confusion Classification Engine
+
+Purpose:
+Map user answers to conceptual confusion types.
+
+Output Structure:
+
+Confusion Type:
+Explanation:
+Correct Mental Model:
+Reinforcement Task:
+
+Design Constraints:
+- Deterministic format
+- Clear conceptual correction
+- One reinforcement activity per session
+
+---
+
+### 5.5 Mental Model Repair Logic
+
+Instead of restating definitions:
+
+Step 1: Identify flawed assumption  
+Step 2: Replace with correct abstraction  
+Step 3: Provide mental visualization  
+Step 4: Provide applied example  
+
+This ensures reconstruction, not memorization.
+
+---
+
+### 5.6 Session Tracking System
+
+Current Implementation:
+- In-memory confusion counter
+
+Tracks:
+- Concept frequency
+- Confusion type frequency
+- Recurring weaknesses
+
+Future Upgrade:
+- PostgreSQL integration
+- User-based tracking
+- Skill progression scoring
+
+---
+
+## 6. Data Flow
+
+1. User selects concept.
+2. Frontend sends POST /diagnose.
+3. Backend calls Diagnostic Engine.
+4. User submits answers.
+5. Backend calls Classification Engine.
+6. System stores confusion type.
+7. Response returned to frontend.
+8. Dashboard updates.
+
+---
+
+## 7. MVP Scope
+
+Included:
+- 3–5 Data Structures & Algorithms topics
+- Diagnostic questioning
+- Confusion classification
+- Structured explanation output
+- Basic dashboard tracking
+
+Excluded:
+- User authentication
+- Persistent storage
+- Multi-user analytics
+- Instructor interface
+
+---
+
+## 8. Non-Functional Requirements
+
+Performance:
+- Response time under 5 seconds
+
+Scalability:
+- Modular prompt structure
+- Expandable concept taxonomy
+
+Reliability:
+- Controlled output formatting
+- Reduced prompt variability
+
+Usability:
+- Clear response segmentation
+- Minimal cognitive overload
+
+---
+
+## 9. Risks and Mitigation
+
+Risk: Over-general AI responses  
+Mitigation: Structured prompt constraints
+
+Risk: Inconsistent classification  
+Mitigation: Controlled output format
+
+Risk: Weak reinforcement quality  
+Mitigation: Reinforcement template design
+
+---
+
+## 10. Competitive Differentiation
+
+Cognivise AI differs from traditional tutors by:
+
+- Detecting confusion types instead of answering directly
+- Correcting mental models systematically
+- Providing structured learning repair
+- Tracking conceptual weaknesses
+
+It optimizes understanding, not response speed.
+
+---
+
+## 11. Future Roadmap
+
+Phase 1:
+- Expand concept taxonomy
+- Improve classification precision
+
+Phase 2:
+- Persistent database
+- Visual heatmap charts
+- User authentication
+
+Phase 3:
+- Adaptive learning pathways
+- Skill scoring algorithm
+- LMS integration
+
+---
+
+## 12. Product Identity
+
+Name: Cognivise AI  
+Tagline: Where Understanding Becomes Visible  
+
+Core Promise:
+We don’t just explain. We diagnose and repair understanding.
